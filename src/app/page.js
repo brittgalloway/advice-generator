@@ -1,10 +1,9 @@
-'use client'
+'use client';
 import { useState } from 'react';
-import Image from 'next/image'
-// import styles from './page.module.css'
+import Image from 'next/image';
 
 export default function Home() {
-  let [id, setId] = useState('1');
+  let [id, setId] = useState('0');
   let [advice, setAdvice] = useState('Click the dice');
 
   function handleClick(){
@@ -21,28 +20,27 @@ export default function Home() {
  
   }
   return (
-    <main >
-      <div className='advice-block'>
-        <h1>Advice #{id}</h1>
-        <div className='advice'>
-          "{advice}"
+    <>
+      <header>
+        Made by <em>Brittney Galloway</em> - <a href='https://github.com/brittgalloway/advice-generator'>Github</a>
+      </header>
+      <main >
+        <div className='advice-block'>
+          <h1>Advice #{id}</h1>
+          <div className='advice'>
+            “{advice}”
+          </div>
+          <div className='divider'></div>
+          <button role='button' type='button' title='Click me to get more advice' onClick={handleClick} className='dice'>
+            <Image
+              src='/icon-dice.svg'
+              alt='Dice icon'
+              width={25}
+              height={25}
+            /> 
+          </button >
         </div>
-        <div className='divider' >
-          <Image
-            src='/pattern-divider-mobile.svg'
-            width={100}
-            height={10}
-          />
-        </div>
-        <button role='button' onClick={handleClick} className='dice'>
-          <Image
-            src='/icon-dice.svg'
-            alt='Dice icon'
-            width={30}
-            height={30}
-          />
-        </button >
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
